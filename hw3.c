@@ -11,7 +11,6 @@ main(){
     
     //create some space for our strings
     char line[500];
-    char argsarray[20][100];
 
     //print prompt
     printf("361>");
@@ -21,6 +20,7 @@ main(){
     while(line != "exit")
     {
         //break the string up into words
+        char argsarray[20][100];
         char *word = strtok(line, " ");
         int i = 0;
         while (word) {
@@ -44,7 +44,7 @@ main(){
             execv(argsarray[0], argsarray);
         }
         else{
-            printf("Parent PID: %d\n", getpid());
+            printf("pid:%d status:&d\n", getpid(), 0);//status?
             int status;
             wait(&status);
             printf("EXIT: %d\n", WEXITSTATUS(status));
@@ -54,6 +54,10 @@ main(){
         // dup2(fd1,0) sends output of fd1 to stdin
 
 
+
+
+
+        //TODO: Ctrl+C triggers SIGINT, and Ctrl+Z triggers SIGSTP
 
 
 
