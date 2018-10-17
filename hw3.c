@@ -8,7 +8,7 @@
 void sigint_handler(int sig){
   char msg[] = "caught sigint\n";
   write(1, msg, sizeof(msg));
-  //exit(0);
+  //exit(0); // this should stop it from exiting
 }
 void sigstp_handler(int sig){
   char msg[] = "caught sigstp\n";
@@ -17,7 +17,8 @@ void sigstp_handler(int sig){
 }
 
 main(){
-    //TODO: Ctrl+C triggers SIGINT, and Ctrl+Z triggers SIGSTP  
+    //TODO: Ctrl+C triggers SIGINT, and Ctrl+Z triggers SIGSTP 
+    //neither works
     signal(SIGINT, sigint_handler);
     signal(SIGSTP, sigstp_handler);
 
@@ -44,14 +45,14 @@ main(){
             //get next word
             word = strtok(NULL, " ");
             i = i + 1;
-            if(*word == '<' || *word == '>'){
+            if(*word == '<' || *word == '>'){//word remains as symbol
                 filename = strtok(NULL, " ");
                 break;
             }
         }
         //OPTIONAL: print out array 
-        for (int j=0;j<i;j++){
-        printf("argsarray[%d]: %s\n", j, argsarray[j]);
+        for (int j=0;j<i;j++)
+            printf("argsarray[%d]: %s\n", j, argsarray[j]);
 
         // reading child's pid
         int pid = fork();
@@ -74,12 +75,12 @@ main(){
             if(*word == '>'){ // add >>
                 fd2 = open(filename,O_CREAT);
                 dup2(fd2, fd1);
-                //?execute?
+                //?should I use execv here?
             }
             if(*word == '<'){
                 fd2 = open(filename,O_RDONLY);
                 dup2(fd1, fd2);
-                //?execute?
+                //?should I use execv here?
             }
         }
 
