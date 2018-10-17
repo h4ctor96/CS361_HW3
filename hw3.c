@@ -8,5 +8,5 @@ main(){
 
 
     printf("361> ");
-    //fgets
+    ///fgets
 }
