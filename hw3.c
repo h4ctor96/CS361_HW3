@@ -30,7 +30,7 @@ int main(){
     char line[500];
 
     //print prompt
-    printf("361 >");
+    printf("CS361 >");
     //read line from terminal
     fgets(line, 500, stdin);
 
@@ -105,7 +105,7 @@ int main(){
             free(argsarray[index]);
 
         //print prompt for next command
-        printf("361 >");
+        printf("CS361 >");
         //read line from terminal
         fgets(line, 500, stdin);
         
