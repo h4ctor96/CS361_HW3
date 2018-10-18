@@ -30,7 +30,7 @@ int main(){
     char line[500];
 
     //print prompt
-    printf("361>");
+    printf("361 >");
     //read line from terminal
     fgets(line, 500, stdin);
 
