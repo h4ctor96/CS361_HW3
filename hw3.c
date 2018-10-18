@@ -8,16 +8,16 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-void sigint_handler(int sig){
-  char msg[] = "caught sigint\n";
+/*void sigint_handler(int sig){
+  char msg[] = "caught sigint";
   write(1, msg, sizeof(msg));
   //exit(0); // this should stop it from exiting
 }
 void sigstop_handler(int sig){
-  char msg[] = "caught sigstp\n";
+  char msg[] = "caught sigstp";
   write(1, msg, sizeof(msg));
   //exit(0);
-}
+}*/
 
 int main(){
     //TODO: Ctrl+C triggers SIGINT, and Ctrl+Z triggers SIGSTP 
@@ -79,7 +79,7 @@ int main(){
         else{
             int status;
             wait(&status);
-            printf("pid:%d status:%d", pid, WEXITSTATUS(status));
+            printf("pid:%d status:%d\n", pid, WEXITSTATUS(status));
             //printf("EXIT: %d\n", WEXITSTATUS(status));
         }
 /*
