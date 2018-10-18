@@ -65,8 +65,8 @@ int main(){
         }
         argsarray[i] = NULL;
         //OPTIONAL: print out array 
-        for (int j=0;j<i;j++)
-            printf("argsarray[%d]: %s\n", j, argsarray[j]);
+        //for (int j=0;j<i;j++)
+            //printf("argsarray[%d]: %s\n", j, argsarray[j]);
 
         // reading child's pid
         int pid = fork();
@@ -105,7 +105,7 @@ int main(){
             free(argsarray[index]);
 
         //print prompt for next command
-        printf("\n361 >");
+        printf("361 >");
         //read line from terminal
         fgets(line, 500, stdin);
         
