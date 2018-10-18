@@ -79,7 +79,7 @@ int main(){
         else{
             int status;
             wait(&status);
-            printf("pid:%d status:%d\n", pid, WEXITSTATUS(status));
+            printf("pid:%d status:%d", pid, WEXITSTATUS(status));
             //printf("EXIT: %d\n", WEXITSTATUS(status));
         }
 /*
