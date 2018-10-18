@@ -105,7 +105,7 @@ int main(){
             free(argsarray[index]);
 
         //print prompt for next command
-        printf("\n361>");
+        printf("\n361 >");
         //read line from terminal
         fgets(line, 500, stdin);
         
