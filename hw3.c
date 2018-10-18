@@ -37,15 +37,16 @@ int main(){
     int length = strlen(line);
     line[length-1] = '\0';
 
+    char* argsarray[20];
+    int i = 0;
+    for(i=0; i < 20; ++i)
+        argsarray[i] = (char*)malloc(100*sizeof(char));
+
     while(strcmp(line,"exit") != 0)
     {
         //break the string up into words
-        char* argsarray[20];
-        int i = 0;
-        for(i=0; i < 20; ++i){
-            argsarray[i] = (char*)malloc(100*sizeof(char));
-            //printf("x");
-        }
+        for(i=0; i < 20; ++i)
+        argsarray[i] = (char*)malloc(100*sizeof(char));
 
         char* word = strtok(line, " ");
         char* filename;
@@ -78,7 +79,7 @@ int main(){
         else{
             int status;
             wait(&status);
-            printf("pid:%d status:&d\n", pid, WEXITSTATUS(status));
+            printf("pid:%d status:%d\n", pid, WEXITSTATUS(status));
             //printf("EXIT: %d\n", WEXITSTATUS(status));
         }
 /*
@@ -99,11 +100,20 @@ int main(){
             }
         }*/
 
+        int index = 0;
+        for(index=0;index<i;++index)
+            free(argsarray[index]);
 
         //print prompt for next command
         printf("\n361>");
         //read line from terminal
         fgets(line, 500, stdin);
+        
+        length = strlen(line);
+        line[length-1] = '\0';
+
+        if(strcmp(line,"exit") == 0)
+         exit(0);
     }
     
     return 0;
